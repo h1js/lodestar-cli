@@ -1,0 +1,21 @@
+{
+  "name": "lodestar-cli",
+  "version": "1.0.0",
+  "main": "./src/main.mjs",
+  "scripts": {
+    "start": "node ./src/main.mjs"
+  },
+  "keywords": [],
+  "author": "@tamwoodtech",
+  "license": "MIT",
+  "type": "commonjs",
+  "description": "a command line based ore autominer",
+  "dependencies": {
+    "@solana/buffer-layout": "^4.0.1",
+    "@solana/buffer-layout-utils": "^0.3.0",
+    "@solana/web3.js": "^1.98.4",
+    "blessed": "^0.1.81",
+    "bn.js": "^5.2.2",
+    "node-fetch": "^2.7.0"
+  }
+}

@@ -85,9 +85,9 @@ function updateTUI(roundData) {
 
   // 4. Update Best EV Display
   if (bestEV.id !== -1) {
-    bestEVDisplay.setContent(`best ev: {${colors.YELLOW}-fg}#${bestEV.id} (${formatSol(bestEV.ev)} sol){/${colors.YELLOW}-fg}`);
+    bestEVDisplay.setContent(`      best ev: {${colors.YELLOW}-fg}#${bestEV.id} (${formatSol(bestEV.ev)} sol){/${colors.YELLOW}-fg}`);
   } else {
-    bestEVDisplay.setContent(`best ev: {${colors.RED}-fg}n/a (all negative){/${colors.RED}-fg}`);
+    bestEVDisplay.setContent(`      best ev: {${colors.RED}-fg}n/a (all negative){/${colors.RED}-fg}`);
   }
 
   // 5. Gather All Square Data
@@ -173,7 +173,7 @@ function displayWinner(roundData, roundIdStr) {
     });
 
     // 4. Update TUI
-    lastWinnerDisplay.setContent(`last winner: {${colors.GREEN}-fg}#${winnerStr}{/${colors.GREEN}-fg}`);
+    lastWinnerDisplay.setContent(`  last winner: {${colors.GREEN}-fg}#${winnerStr}{/${colors.GREEN}-fg}`);
     countdownTimer.setContent(`waiting...`);
 
     // 5. Log and play sound

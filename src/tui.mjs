@@ -465,7 +465,7 @@ export function initTUI() {
     top: widgetTop++,
     left: 1,
     height: 1,
-    content: 'last winner: --',
+    content: '  last winner: --',
     tags: true
   });
 
@@ -475,7 +475,7 @@ export function initTUI() {
     parent: statsWindow,
     top: widgetTop++,
     left: 1,
-    content: 'bot wallet: loading...',
+    content: '   bot wallet: loading...',
     tags: true
   });
 
@@ -499,7 +499,7 @@ export function initTUI() {
     parent: statsWindow,
     top: widgetTop++,
     left: 1,
-    content: 'refined ore: 0.0000',
+    content: '  refined ore: 0.0000',
     tags: true
   });
 
@@ -510,7 +510,7 @@ export function initTUI() {
     top: widgetTop++,
     left: 1,
     height: 1,
-    content: 'ore price: loading...',
+    content: '    ore price: loading...',
     tags: true
   });
 
@@ -519,7 +519,7 @@ export function initTUI() {
     top: widgetTop++,
     left: 1,
     height: 1,
-    content: 'sol price: Loading...',
+    content: '    sol price: Loading...',
     tags: true
   });
 
@@ -528,7 +528,7 @@ export function initTUI() {
     top: widgetTop++,
     left: 1,
     height: 1,
-    content: 'ore/sol: loading...',
+    content: '      ore/sol: loading...',
     tags: true
   });
 
@@ -537,7 +537,7 @@ export function initTUI() {
     top: widgetTop++,
     left: 1,
     height: 1,
-    content: 'best EV: --',
+    content: '      best EV: --',
     tags: true
   });
 

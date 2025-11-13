@@ -83,7 +83,7 @@ export async function updateMinerStats(connection, signer, tuiWidgets) {
       const { userBalance } = getState();
 
       if (botBalanceDisplay) 
-        botBalanceDisplay.setContent(`bot wallet: {${colors.GREEN}-fg}${userBalance.toFixed(4)} SOL{/}`);
+        botBalanceDisplay.setContent(`   bot wallet: {${colors.GREEN}-fg}${userBalance.toFixed(4)} SOL{/}`);
       
       if (claimableSolDisplay) 
         claimableSolDisplay.setContent(`claimable sol: {${colors.YELLOW}-fg}${rewardsSol.toFixed(4)}{/}`);
@@ -92,7 +92,7 @@ export async function updateMinerStats(connection, signer, tuiWidgets) {
         claimableOreDisplay.setContent(`unrefined ore: {${colors.YELLOW}-fg}${rewardsOre.toFixed(4)}{/}`);
       
       if (refinedOreDisplay) 
-        refinedOreDisplay.setContent(`refined ore: {${colors.BLUE}-fg}${refinedOre.toFixed(4)}{/}`);
+        refinedOreDisplay.setContent(`  refined ore: {${colors.BLUE}-fg}${refinedOre.toFixed(4)}{/}`);
     }
   } catch (e) {
     log(`error updating miner stats: ${e.message}`);
@@ -119,14 +119,14 @@ export async function updatePrices(connection, signer, tuiWidgets) {
 
   // 2. Update TUI widgets with new prices
   if (oreUsd > 0) {
-    orePriceDisplay.setContent(`ore price: {${colors.YELLOW}-fg}$${oreUsd.toFixed(4)}{/${colors.YELLOW}-fg}`);
+    orePriceDisplay.setContent(`    ore price: {${colors.YELLOW}-fg}$${oreUsd.toFixed(4)}{/${colors.YELLOW}-fg}`);
   }
   if (solUsd > 0) {
-    solPriceDisplay.setContent(`sol price: {${colors.YELLOW}-fg}$${solUsd.toFixed(2)}{/${colors.YELLOW}-fg}`);
+    solPriceDisplay.setContent(`    sol price: {${colors.YELLOW}-fg}$${solUsd.toFixed(2)}{/${colors.YELLOW}-fg}`);
   }
   if (oreUsd > 0 && solUsd > 0) {
     oreSolRatio = oreUsd / solUsd;
-    oreSolRatioDisplay.setContent(`ore/sol: {${colors.YELLOW}-fg}${oreSolRatio.toFixed(6)}{/${colors.YELLOW}-fg}`);
+    oreSolRatioDisplay.setContent(`      ore/sol: {${colors.YELLOW}-fg}${oreSolRatio.toFixed(6)}{/${colors.YELLOW}-fg}`);
   }
 
   // 3. Update the global app state

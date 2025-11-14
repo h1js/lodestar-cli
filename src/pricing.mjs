@@ -12,6 +12,9 @@
 
 // --- Imports ---
 import fetch from 'node-fetch';
+import {
+  LAMPORTS_PER_SOL,
+} from '@solana/web3.js';
 import { ORE_TOKEN_ADDRESS, SOL_TOKEN_ADDRESS, SOL_PER_LAMPORT } from './constants.mjs';
 import { getState, setAppState } from './state.mjs';
 import { log } from './utils.mjs';
@@ -119,7 +122,7 @@ export async function updatePrices(connection, signer, tuiWidgets) {
 
   // 2. Update TUI widgets with new prices
   if (oreUsd > 0) {
-    orePriceDisplay.setContent(`    ore price: {${colors.YELLOW}-fg}$${oreUsd.toFixed(4)}{/${colors.YELLOW}-fg}`);
+    orePriceDisplay.setContent(`    ore price: {${colors.YELLOW}-fg}$${oreUsd.toFixed(2)}{/${colors.YELLOW}-fg}`);
   }
   if (solUsd > 0) {
     solPriceDisplay.setContent(`    sol price: {${colors.YELLOW}-fg}$${solUsd.toFixed(2)}{/${colors.YELLOW}-fg}`);
@@ -129,11 +132,15 @@ export async function updatePrices(connection, signer, tuiWidgets) {
     oreSolRatioDisplay.setContent(`      ore/sol: {${colors.YELLOW}-fg}${oreSolRatio.toFixed(6)}{/${colors.YELLOW}-fg}`);
   }
 
+  const balanceLamports = await connection.getBalance(signer.publicKey);
+  const balanceSol = balanceLamports / LAMPORTS_PER_SOL;
+
   // 3. Update the global app state
   setAppState({
     PRICE_ORE_USD: oreUsd,
     PRICE_SOL_USD: solUsd,
     priceOreSol: oreSolRatio,
+    userBalance: balanceSol,
   });
 
   // 4. Fetch Miner Stats

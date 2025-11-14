@@ -209,6 +209,10 @@ export async function sendDeployTx(targets, connection, signer) {
     );
 
     log(`deploy successful! signature: ${signature.slice(0, 16)}...`);
+
+    const newBalance = await connection.getBalance(authority);
+    const newBalanceSol = newBalance / LAMPORTS_PER_SOL;
+    setAppState({ userBalance: newBalanceSol });
   } catch (e) {
     const errMessage = e.message || '';
 
@@ -283,8 +287,12 @@ export async function sendClaimSolTx(connection, signer) {
     );
 
     log(`claim SOL successful: ${signature.slice(0, 16)}...`);
-    return true; // Success
 
+    const newBalance = await connection.getBalance(authority);
+    const newBalanceSol = newBalance / LAMPORTS_PER_SOL;
+    setAppState({ userBalance: newBalanceSol });
+
+    return true; // Success
   } catch (e) {
     const errorMsg = e.message || e.logs?.join(' ') || '';
     

@@ -20,7 +20,7 @@ import { getSigner } from './wallet.mjs';
 import { sendDeployTx } from './transactions.mjs';
 
 // --- Constants ---
-const AUTOMATION_TRIGGER_SECONDS = 12; // Triggers at 12 seconds left
+const AUTOMATION_TRIGGER_SECONDS = 10; // Triggers at 10 seconds left
 
 // --- Public Functions ---
 

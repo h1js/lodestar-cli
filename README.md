@@ -28,7 +28,7 @@ The bot uses a self-contained wallet system, automatic reward claiming, and anyt
       * **`5x EV`**: Deploys to the top 5 best positive-EV squares.
   * **Speculation Mode:** Run the bot in a "dry run" mode. It logs all potential moves without spending a single lamport.
   * **Ephemeral Wallet System:** Automatically generates a local `id.json` keypair if one doesn't exist. No need to install global Solana CLI tools or mess with paths.
-  * **Auto-Claiming:** Automatically claims pending SOL rewards from the Miner PDA every 30 minutes (if above a minimum threshold).
+  * **Auto-Claiming:** Automatically claims pending SOL rewards from the Miner PDA every 10 minutes (if above a minimum threshold).
   * **One-Click Cash Out:** A built-in "Cash Out" function that claims all pending rewards, aggregates them with your wallet balance, and sends the total SOL to a destination address of your choice.
   * **Real-time Price Tracking:** Pulls live ORE/SOL/USD prices from DexScreener.
 

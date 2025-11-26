@@ -26,7 +26,7 @@ const appState = {
   appMode: APP_MODES.IDLE,
   isSpeculating: false,
   isAudioEnabled: false,
-  customDeployAmount: 0.00025,
+  customDeployAmount: 0.0001,
 
   // --- Wallet & User Data ---
   userBalance: 0,

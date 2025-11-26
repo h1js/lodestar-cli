@@ -60,7 +60,7 @@ async function main() {
     // Start TUI countdown timer
     setInterval(updateCountdown, 1000);
 
-    // Auto-Claim SOL (Every 10 mins)
+    // Auto-Claim SOL (Every 5 mins)
     setInterval(async () => {
       const { minerRewardsSol, appMode } = getState();
 

@@ -20,7 +20,7 @@ import { getSigner } from './wallet.mjs';
 import { sendDeployTx } from './transactions.mjs';
 
 // --- Constants ---
-const AUTOMATION_TRIGGER_SECONDS = 10; // Triggers at 10 seconds left
+const AUTOMATION_TRIGGER_SECONDS = 5; // Triggers at 5 seconds left
 
 // --- Public Functions ---
 
@@ -86,6 +86,9 @@ export function runAutomationCheck(roundData, secondsRemaining, connection, sign
       break;
     case APP_MODES.FIVE_X_EV:
       targets = analysis.byEV.slice(0, 5);
+      break;
+    case APP_MODES.THIRTEEN_X_EV:
+      targets = analysis.byEV.slice(0, 13);
       break;
     case APP_MODES.TWENTY_FIVE_X_EV:
       targets = analysis.byEV.slice(0, 25);

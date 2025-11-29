@@ -24,7 +24,7 @@ console.warn = (...args) => {
 
 // --- Imports ---
 import { initTUI, showLowBalanceWarning } from './tui.mjs';
-import { setUtilWidgets, log } from './utils.mjs';
+import { setUtilWidgets, log, createPreciseInterval } from './utils.mjs';
 import { initConnection } from './solana.mjs';
 import { updatePrices, updateMinerStats } from './pricing.mjs';
 import { updateCountdown, startGameLoop } from './game.mjs';
@@ -73,11 +73,11 @@ async function main() {
       updatePrices(connection, signer, tuiWidgets);
       setInterval(() => updatePrices(connection, signer, tuiWidgets), PRICE_UPDATE_MS);
     } catch (e) {
-      //
+      console.log(e)
     }
 
     // Start TUI countdown timer
-    setInterval(updateCountdown, 1000);
+    createPreciseInterval(updateCountdown, 1000);
 
     // Auto-Claim SOL (Every 5 mins)
     setInterval(async () => {

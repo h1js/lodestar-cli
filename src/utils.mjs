@@ -55,6 +55,9 @@ export function log(message) {
  * @param {Error} error - The error object.
  */
 export function handleFatalError(error, chainLogs = '') {
+  console.log('fatal error', error.message)
+  return
+
   // 1. Destroy TUI to return to a clean console
   if (screen) {
     screen.destroy();
@@ -132,3 +135,37 @@ export const truncateAddress = (address) => {
   const lastFour = address.slice(-4);
   return `${firstFour}...${lastFour}`;
 };
+
+/**
+ * Schedule the next tick from the original start time. 
+ * Removes cumulative drift and can catch up if a tick was delayed.
+ */
+export function createPreciseInterval(fn, intervalMs) {
+  let running = true;
+  const start = performance.now();
+  let count = 0;
+
+  async function loop() {
+    if (!running) return;
+    const target = start + (++count) * intervalMs;
+    const now = performance.now();
+    const drift = now - target;
+
+    try {
+      await fn(); // allow fn to be async
+    } catch (err) {
+      console.log('tick error', err);
+    }
+
+    // compute next delay relative to current precise clock
+    const nextDelay = Math.max(0, target + intervalMs - performance.now());
+    // schedule next iteration
+    setTimeout(loop, nextDelay);
+  }
+
+  // start first tick aligned to interval
+  setTimeout(loop, intervalMs);
+  return {
+    stop() { running = false; }
+  };
+}

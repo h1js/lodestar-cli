@@ -229,7 +229,7 @@ export async function sendDeployTx(targets, connection, signer) {
     }
 
     // --- 3. Handle actual fatal errors ---
-    // handleFatalError(e, logs);
+    handleFatalError(e, logs);
   }
 }
 

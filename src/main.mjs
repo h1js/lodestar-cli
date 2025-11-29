@@ -69,8 +69,12 @@ async function main() {
     log(`connecting to ${connection.rpcEndpoint}...`);
 
     // Start price update loop (fetch immediately, then set interval)
-    updatePrices(connection, signer, tuiWidgets);
-    setInterval(() => updatePrices(connection, signer, tuiWidgets), PRICE_UPDATE_MS);
+    try {
+      updatePrices(connection, signer, tuiWidgets);
+      setInterval(() => updatePrices(connection, signer, tuiWidgets), PRICE_UPDATE_MS);
+    } catch (e) {
+      //
+    }
 
     // Start TUI countdown timer
     setInterval(updateCountdown, 1000);
